@@ -1,29 +1,21 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
-    // set in inspector
-    public float speed;
+public class Enemy : MonoBehaviour {
+  // set in inspector
+  public float speed;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+  void Update() {
+    transform.Translate(Vector3.left * speed * Time.deltaTime);
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+  private void OnCollisionEnter2D(Collision2D c) {
+    if (c.gameObject.CompareTag("Bullet")) {
+      Destroy(gameObject);
+      Destroy(c.gameObject);
     }
-
-    private void OnCollisionEnter2D(Collision2D c) {
-        if (c.gameObject.CompareTag("Bullet")) {
-            Destroy(gameObject);
-            Destroy(c.gameObject);
-        }
-        else if (c.gameObject.CompareTag("Player")) {
-            Destroy(gameObject);
-        }
+    else if (c.gameObject.CompareTag("Player")) {
+      Destroy(gameObject);
+      c.gameObject.GetComponent<Player>().DamageFromEnemy();
     }
+  }
 }
