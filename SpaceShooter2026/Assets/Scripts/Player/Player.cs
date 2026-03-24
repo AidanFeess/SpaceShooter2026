@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour 
 {
@@ -52,6 +53,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("MainMenu");
+        }
+
         healthSlider.value = health;
 
         if (Keyboard.current.spaceKey.isPressed && Time.time >= nextFireTime && health > 0)

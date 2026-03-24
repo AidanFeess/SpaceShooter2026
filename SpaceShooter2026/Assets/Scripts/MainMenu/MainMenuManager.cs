@@ -39,6 +39,11 @@ public class MainMenuManager : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
+    public void OnExitPressed()
+    {
+        Application.Quit();
+    }
+
     void OnVolumeChanged(float value)
     {
         AudioManager.Instance.masterVolume = value;
