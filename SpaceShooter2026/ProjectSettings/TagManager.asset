@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Enemy
-  - ShieldBoost
-  - ScreenOutOfBounds
+  - EnemyBullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Bullet
-  - 
+  - GameOver
   - 
   - 
   - 
